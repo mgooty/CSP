@@ -1,0 +1,669 @@
+{
+  "Activities": [
+    {
+      "Code": "INITIAL",
+      "Name": "Initial",
+      "ActivityType": "Initial"
+    },
+    {
+      "Code": "GI-PRE-DRAFT",
+      "Name": "Pre Draft Processing",
+      "ActivityType": "SCRIPT",
+      "configuration": {
+        "scriptCode": "CommonPreprocessingDraft",
+        "wholeWido": true
+      }
+    },
+    {
+      "Code": "SUBMIT-REQUEST",
+      "Name": "Initial Inquiry",
+      "clientName": "Initial Inquiry",
+      "ActivityType": "step",
+      "defaultActionCode": "Request-Submit",
+      "ShowCancelToClientUser": true,
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "Request-Submit"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "CLIENTADVISOR"
+          },
+          "actions": [
+            {
+              "Code": "Request-Submit"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "Request-Submit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "REQUEST-REVIEW",
+      "Name": "Inquiry - Send Reply",
+      "clientName": "Review Request",
+      "ActivityType": "step",
+      "defaultActionCode": "Request-Review-Submit",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "CLIENTADVISOR"
+          },
+          "actions": [
+            {
+              "Code": "Request-Review-Submit"
+            },
+            {
+              "Code": "Request-Payment"
+            },
+            {
+              "Code": "Request-Review-Bypass"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "Request-Review-Submit"
+            },
+            {
+              "Code": "Request-Payment"
+            },
+            {
+              "Code": "Request-Review-Bypass"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "REGCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "Request-Review-Submit"
+            },
+            {
+              "Code": "Request-Payment"
+            },
+            {
+              "Code": "Request-Review-Bypass"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "PROVIDE-CLARIFICATIONS",
+      "Name": "Inquiry- Review Reply",
+      "ActivityType": "step",
+      "defaultActionCode": "PROVIDE-CLARIFICATIONS-SUBMIT",
+      "clientName": "Inquiry- Review Reply",
+      "ShowCancelToClientUser": true,
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "CLIENTADVISOR"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "CREATE-INVOICE",
+      "Name": "Create-Invoice",
+      "ActivityType": "CAPTURE_INVOICE_DATA"
+    },
+    {
+      "Code": "PAYMENT-DUE",
+      "Name": "Make Payment",
+      "ActivityType": "MAKE_PAYMENT",
+      "clientName": "Make Payment",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "Payment-Due-Request-Clarification"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "SRCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "Payment-Due-Request-Clarification"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "PROCESSING-REQUEST",
+      "Name": "Service Delivery",
+      "ActivityType": "step",
+      "defaultActionCode": "PROCESSING-REQUEST-ADDL-INFO",
+      "clientName": "Service Delivery",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "REGCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "PROCESSING-REQUEST-ACTIONS"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-INFO"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-PAYMENT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "SRCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "PROCESSING-REQUEST-ACTIONS"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-INFO"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-PAYMENT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "PROCESSING-REQUEST-ACTIONS"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-INFO"
+            },
+            {
+              "Code": "PROCESSING-REQUEST-ADDL-PAYMENT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "CREATE-INVOICE2",
+      "Name": "Create-Invoice2",
+      "ActivityType": "CAPTURE_INVOICE_DATA"
+    },
+    {
+      "Code": "PAYMENT-DUE2",
+      "Name": "Make Payment",
+      "ActivityType": "MAKE_PAYMENT",
+      "clientName": "Make Payment",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "Payment-Due2-Request-Clarification"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "SRCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "Payment-Due2-Request-Clarification"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "PROVIDE-ADDL-INFO",
+      "Name": "Service Delivery",
+      "ActivityType": "step",
+      "defaultActionCode": "PROVIDE-ADDL-INFO-SUBMIT",
+      "clientName": "Service Delivery",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-ADDL-INFO-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "REGCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-ADDL-INFO-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "PROVIDE-ADDL-INFO-SUBMIT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "CLOSE-WORKFLOW",
+      "Name": "Close Workflow",
+      "ActivityType": "step",
+      "defaultActionCode": "CLOSE-WORKFLOW-SUBMIT",
+      "clientName": "Review Final Status",
+      "Events": [
+        {
+          "Type": "WAIT_COMPLETED",
+          "Handler": "MOVE_TO_NEXT_STEP",
+          "Configuration": {
+            "DurationType": "DAYS",
+            "Duration": 5,
+            "ActionCode": "CLOSE-WORKFLOW-SUBMIT"
+          }
+        }
+      ],
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "Client"
+          },
+          "actions": [
+            {
+              "Code": "CLOSE-WORKFLOW-SUBMIT"
+            },
+            {
+              "Code": "CLOSE-WORKFLOW-CLARIFICATION"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "REGCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "CLOSE-WORKFLOW-SUBMIT"
+            },
+            {
+              "Code": "CLOSE-WORKFLOW-CLARIFICATION"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "CLOSE-WORKFLOW-SUBMIT"
+            },
+            {
+              "Code": "CLOSE-WORKFLOW-CLARIFICATION"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "FINAL-CLARIFICATIONS",
+      "Name": "Final Clarifications",
+      "ActivityType": "step",
+      "defaultActionCode": "FINAL-CLARIFICATIONS-SUBMIT",
+      "clientName": "Final Clarifications",
+      "Participants": [
+        {
+          "ParticipantType": "PRIMARY",
+          "Role": {
+            "Code": "REGCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "FINAL-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "SUPERVISOR",
+          "Role": {
+            "Code": "SRCORPSECEXEC"
+          },
+          "actions": [
+            {
+              "Code": "FINAL-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        },
+        {
+          "ParticipantType": "ESCALATION",
+          "Role": {
+            "Code": "MANAGER"
+          },
+          "actions": [
+            {
+              "Code": "FINAL-CLARIFICATIONS-SUBMIT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Code": "FINAL",
+      "ActivityType": "Final",
+      "name": "Final"
+    }
+  ],
+  "Actions": [
+    {
+      "Code": "Create",
+      "Name": "Create",
+      "actiontype": "System",
+      "activityFrom": {
+        "Code": "INITIAL"
+      },
+      "activityTo": {
+        "Code": "GI-PRE-DRAFT"
+      }
+    },
+     {
+      "Code": "EP-PRE-DRAFT",
+      "Name": "Complete",
+      "actiontype": "System",
+      "activityFrom": {
+        "Code": "GI-PRE-DRAFT"
+      },
+      "activityTo": {
+        "Code": "SUBMIT-REQUEST"
+      }
+    },
+    {
+      "Code": "Request-Submit",
+      "Name": "Submit",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "SUBMIT-REQUEST"
+      },
+      "activityTo": {
+        "Code": "REQUEST-REVIEW"
+      }
+    },
+    {
+      "Code": "Request-Review-Bypass",
+      "Name": "Close Inquiry",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "REQUEST-REVIEW"
+      },
+      "activityTo": {
+        "Code": "FINAL"
+      }
+    },
+    {
+      "Code": "Request-Review-Submit",
+      "Name": "Reply to Client",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "REQUEST-REVIEW"
+      },
+      "activityTo": {
+        "Code": "PROVIDE-CLARIFICATIONS"
+      }
+    },
+    {
+      "Code": "Request-Payment",
+      "Name": "Request Payment",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "REQUEST-REVIEW"
+      },
+      "activityTo": {
+        "Code": "CREATE-INVOICE"
+      }
+    },
+    {
+      "Code": "CREATE-INVOICE-SUBMIT",
+      "Name": "Submit",
+      "actiontype": "System",
+      "activityFrom": {
+        "Code": "CREATE-INVOICE"
+      },
+      "activityTo": {
+        "Code": "PAYMENT-DUE"
+      }
+    },
+    {
+      "Code": "Payment-Due-Request-Clarification",
+      "Name": "Request Clarification",
+      "commentRequired": true,
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PAYMENT-DUE"
+      },
+      "activityTo": {
+        "Code": "REQUEST-REVIEW"
+      }
+    },
+    {
+      "Code": "Payment-Due-Make-Payment",
+      "Name": "Make Payment",
+      "actiontype": "system",
+      "activityFrom": {
+        "Code": "PAYMENT-DUE"
+      },
+      "activityTo": {
+        "Code": "PROCESSING-REQUEST"
+      }
+    },
+    {
+      "Code": "PROVIDE-CLARIFICATIONS-SUBMIT",
+      "Name": "Send Reply",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PROVIDE-CLARIFICATIONS"
+      },
+      "activityTo": {
+        "Code": "REQUEST-REVIEW"
+      }
+    },
+    {
+      "Code": "PROCESSING-REQUEST-ADDL-INFO",
+      "Name": "Request Clarification",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PROCESSING-REQUEST"
+      },
+      "activityTo": {
+        "Code": "PROVIDE-ADDL-INFO"
+      }
+    },
+    {
+      "Code": "PROCESSING-REQUEST-ADDL-PAYMENT",
+      "Name": "Request Payment",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PROCESSING-REQUEST"
+      },
+      "activityTo": {
+        "Code": "CREATE-INVOICE2"
+      }
+    },
+    {
+      "Code": "CREATE-INVOICE2-SUBMIT",
+      "Name": "Submit",
+      "actiontype": "System",
+      "activityFrom": {
+        "Code": "CREATE-INVOICE2"
+      },
+      "activityTo": {
+        "Code": "PAYMENT-DUE2"
+      }
+    },
+    {
+      "Code": "Payment-Due2-Make-Payment",
+      "Name": "Make Payment",
+      "actiontype": "system",
+      "activityFrom": {
+        "Code": "PAYMENT-DUE2"
+      },
+      "activityTo": {
+        "Code": "PROCESSING-REQUEST"
+      }
+    },
+    {
+      "Code": "Payment-Due2-Request-Clarification",
+      "Name": "Request Clarification",
+      "commentRequired": true,
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PAYMENT-DUE2"
+      },
+      "activityTo": {
+        "Code": "PROCESSING-REQUEST"
+      }
+    },
+    {
+      "Code": "PROVIDE-ADDL-INFO-SUBMIT",
+      "Name": "Send Reply",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PROVIDE-ADDL-INFO"
+      },
+      "activityTo": {
+        "Code": "PROCESSING-REQUEST"
+      }
+    },
+    {
+      "Code": "PROCESSING-REQUEST-ACTIONS",
+      "Name": "Service Complete",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "PROCESSING-REQUEST"
+      },
+      "activityTo": {
+        "Code": "CLOSE-WORKFLOW"
+      }
+    },
+    {
+      "Code": "CLOSE-WORKFLOW-CLARIFICATION",
+      "Name": "Request Clarification",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "CLOSE-WORKFLOW"
+      },
+      "activityTo": {
+        "Code": "FINAL-CLARIFICATIONS"
+      }
+    },
+    {
+      "Code": "FINAL-CLARIFICATIONS-SUBMIT",
+      "Name": "Submit",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "FINAL-CLARIFICATIONS"
+      },
+      "activityTo": {
+        "Code": "CLOSE-WORKFLOW"
+      }
+    },
+    {
+      "Code": "CLOSE-WORKFLOW-SUBMIT",
+      "Name": "Completed",
+      "actiontype": "User",
+      "activityFrom": {
+        "Code": "CLOSE-WORKFLOW"
+      },
+      "activityTo": {
+        "Code": "FINAL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "Code": "OTHER-SERVICES-INQUIRY-WORKFLOW",
+  "Name": "Other Inquiry",
+  "Description": "Complete this form to request other services related to your Singapore company.",
+  "IntroScreen": "Use this service request if you have any questions regarding our services.<br><br>If your inquiry is related to your existing Company on our Platform, please choose from the list below.",
+  "sortOrder": 85,
+  "WorkflowCategory": {
+    "Code": "OTHER"
+  },
+  "parameters": {
+    "company": {
+      "name": "Select Company",
+      "type": "ROOT_ENTITY",
+      "optional": true
+    }
+  },
+  "userparameters": [
+    "company"
+  ],
+  "StartRoles": [
+    {
+      "Code": "CLIENT"
+    },
+    {
+      "Code": "CLIENTADVISOR"
+    }
+  ],
+  "StartClientTypes": [
+    {
+      "Code": "ACTIVE"
+    },
+    {
+      "Code": "INACTIVE"
+    },
+    {
+      "Code": "LEAD"
+    }
+  ],
+  
+  "AlwaysDisplayed": true,
+  "GlCode" : "207",
+  "visibleToClient" : true
+}

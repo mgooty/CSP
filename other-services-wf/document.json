@@ -1,0 +1,12 @@
+{
+  "DomainModel": {
+    "Code": "{{domain_model_code}}"
+  },
+  "displayPropertyRequired": false,
+  "rootEntity": {
+    "Code": "Company",
+    "Properties": [
+      "DocACRABizProfile"
+    ]
+  }
+}

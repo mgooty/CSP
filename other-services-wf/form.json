@@ -1,0 +1,440 @@
+{
+  "version": "1.0",
+  "control": "awi-form",
+  "elements": [
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Instructions",
+        "usedonactivity": [
+          "SUBMIT-REQUEST",
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PAYMENT-DUE",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "PAYMENT-DUE2",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Tell us your needs in the Service Needs section below and click the SUBMIT button.</li><li>After you Submit your request, we will promptly review and respond to your inquiry.</li><li>You can monitor the status of your inquiry and communicate with our team at any time through the Platform.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "SUBMIT-REQUEST"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Review the inquiry from the Client.</li><li>If you want to provide or ask the Client for any documents, use the  Attach/Request Documents functionality.</li><li>Click the REPLY TO CLIENT button above to provide your comments and send the request to the Client.</li><li>If Payment is needed at this point, please configure the Service Charges and click the REQUEST PAYMENT button.</li><li>To close this service request, click the CLOSE INQUIRY button.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "REQUEST-REVIEW"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Please review our response in the Client Communication Section and provide the requested information.</li><li>Click the SEND REPLY button to continue.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROVIDE-CLARIFICATIONS"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Please click on the MAKE PAYMENT button to pay the fees due. You can review the total amount due and its breakdown in the <a href='#Service Fees'>Service Fees</a> section.<br>If you have any questions, click the REQUEST CLARIFICATION button above and enter your message in the comments field on the confirmation screen.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PAYMENT-DUE"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Review the request from the Client and take appropriate actions.</li><li>To communicate with the Client, click  the REQUEST CLARIFICATION button.</li><li>If additional payment is needed at this point, please configure the Service Charges and click the REQUEST PAYMENT button.</li><li>If work on this request is completed, click the SERVICE COMPLETE button.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROCESSING-REQUEST"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Please review our response in the Client Communication Section and provide the requested information.</li><li>Click the SEND REPLY button to continue.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROVIDE-ADDL-INFO"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Please click on the MAKE PAYMENT button to pay the fees due. You can review the total amount due and its breakdown in the <a href='#Service Fees'>Service Fees</a> section.<br>If you have any questions, click the REQUEST CLARIFICATION button above and enter your message in the comments field on the confirmation screen.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PAYMENT-DUE2"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Your service request has been completed.</li><li>You can download any documents attached for your reference.</li><li>Click the COMPLETED button to mark this service request as completed.</li><li>If no action is taken, this request will automatically be closed in 5 days.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "CLOSE-WORKFLOW"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Company Information",
+        "hidden-expression" : {
+          "binding-path": "_RUNTIME.isCSCompany",
+            "operation": "IsEqual",
+            "value": false
+        },
+        "usedonactivity": [
+          "SUBMIT-REQUEST",
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PAYMENT-DUE",
+          "PAYMENT-DUE2",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "For your reference, basic information about your company is provided below.",
+            "preset": "3"
+          }
+        },
+        {
+          "control": "awi-textbox",
+          "properties": {
+            "label": "Company Name",
+            "binding": "Company.CompanyName",
+            "readonly": true
+          }
+        },
+        {
+          "control": "awi-document",
+          "properties": {
+            "label": "Company Profile",
+            "binding": "Company.DocACRABizProfile",
+            "readonly": true
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Client Communication",
+        "usedonactivity": [
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PAYMENT-DUE",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "PAYMENT-DUE2",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-message-history",
+          "properties": {
+            "recent-comments-number": 2
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Supporting Documents",
+        "usedonactivity": [
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PAYMENT-DUE",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "PAYMENT-DUE2",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-flatlist",
+          "properties": {
+            "user-defined": true,
+            "label": "Additional Docs"
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Internal Notes",
+        "usedonactivity": [
+          "REQUEST-REVIEW",
+          "PROCESSING-REQUEST",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "This section is for internal notes only and will not be visible to the Client. You can update the title of the service request by updating the title field. You can also enter internal notes related to this service request for reference by the internal staff.",
+            "preset": "3"
+          }
+        },
+        {
+          "control": "awi-textbox",
+          "properties": {
+            "label": "Title",
+            "binding": "_RUNTIME.PUBLISHER_RUNTIME.WFTitle"
+          }
+        },
+        {
+          "control": "awi-textarea",
+          "properties": {
+            "label": "Notes",
+            "binding": "_RUNTIME.PUBLISHER_RUNTIME.AssessmentNotes",
+            "rows": 4,
+            "max-rows": 8
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Service Needs",
+        "usedonactivity": [
+          "SUBMIT-REQUEST",
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO"
+        ],
+        "readonly-expression": {
+          "criteria": "step",
+          "operation": "In",
+          "value": [
+            "REQUEST-REVIEW",
+            "PROVIDE-CLARIFICATIONS",
+            "PROCESSING-REQUEST",
+            "PROVIDE-ADDL-INFO"
+          ]
+        }
+      },
+      "elements": [
+        {
+          "control": "awi-textarea",
+          "properties": {
+            "label": "Describe your service needs",
+            "binding": "_RUNTIME.PUBLISHER_RUNTIME.RequestSummary",
+            "rows": 5,
+            "max-rows": 10,
+            "maxLength": 2000,
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Service Fees",
+        "usedonactivity": [
+          "REQUEST-REVIEW",
+          "PAYMENT-DUE",
+          "PAYMENT-DUE2",
+          "PROVIDE-CLARIFICATIONS",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Based on the information provided, fees for this request are as follows:",
+            "preset": "3"
+          }
+        },
+        {
+          "control": "awi-pricing",
+          "properties": {
+            "rows": [
+              {
+                "code": "UIS-WORKFLOW",
+                "parentWorkflow": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "control": "awi-section",
+      "properties": {
+        "label": "Next Steps",
+        "usedonactivity": [
+          "SUBMIT-REQUEST",
+          "REQUEST-REVIEW",
+          "PROVIDE-CLARIFICATIONS",
+          "PAYMENT-DUE",
+          "PROCESSING-REQUEST",
+          "PROVIDE-ADDL-INFO",
+          "PAYMENT-DUE2",
+          "CLOSE-WORKFLOW",
+          "FINAL-CLARIFICATIONS"
+        ]
+      },
+      "elements": [
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": " When finished, click the SUBMIT button. Our team will review your request and respond promptly.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "SUBMIT-REQUEST"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Click the REPLY TO CLIENT button above to provide your comments and send the request to the Client.</li><li>If Payment is needed at this point, please configure the Service Charges and click the REQUEST PAYMENT button.</li><li>If no further action is required from the Client, click the CLOSE INQUIRY button to complete this request.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "REQUEST-REVIEW"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Please click the SEND REPLY button to continue.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROVIDE-CLARIFICATIONS"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Please pay the service fees due by clicking on the MAKE PAYMENT button.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PAYMENT-DUE"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>To communicate with the Client, click  the REQUEST CLARIFICATION button.</li><li>If additional payment is needed at this point, please configure the Service Charges and click the REQUEST PAYMENT button.</li><li>If work on this request is completed, click the SERVICE COMPLETE button.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROCESSING-REQUEST"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "<ol><li>Click the SEND REPLY button to continue.</li></ol>",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PROVIDE-ADDL-INFO"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Please pay the service fees due by clicking on the MAKE PAYMENT button.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "PAYMENT-DUE2"
+            }
+          }
+        },
+        {
+          "control": "awi-statictext",
+          "properties": {
+            "value": "Click the COMPLETED button to mark this service request as completed.",
+            "preset": "3",
+            "hidden-expression": {
+              "criteria": "step",
+              "operation": "IsNotEqual",
+              "value": "CLOSE-WORKFLOW"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
