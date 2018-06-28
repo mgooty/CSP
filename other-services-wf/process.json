@@ -1,7 +1,7 @@
 {
   "Activities": [
     {
-      "Code": "INITIAL",
+      "Code": "INITIAL-TEST",
       "Name": "Initial",
       "ActivityType": "Initial"
     },
