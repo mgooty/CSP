@@ -1,6 +1,6 @@
 {
-  "Code": "OTHER-SERVICES-INQUIRY-WORKFLOW-TEST",
-  "Name": "Other Inquiry",
+  "Code": "OTHER-SERVICES-INQUIRY-WORKFLOW",
+  "Name": "Other Inquiry Mithun",
   "Description": "Complete this form to request other services related to your Singapore company.",
   "IntroScreen": "Use this service request if you have any questions regarding our services.<br><br>If your inquiry is related to your existing Company on our Platform, please choose from the list below.",
   "sortOrder": 85,
